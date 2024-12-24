@@ -54,13 +54,13 @@ This packet is sent by the agent to send metrics and health data to the main das
 This packet acknowledges the initiation attempt and gives the agent instructions.
 
 ```
-+---------------+-----------------+---------------------+
-| Version (4)   | Packet Type (4) |       Flags (8)     |
-+---------------+-----------------+---------------------+
-|                  Agent ID (24)                        |
-+-------------------------------------------------------+
-|          Response Time (16)         |  Reserved (16)  |
-+-------------------------------------------------------+
++----------------+----------------+----------------+
+| Version (4)    | Packet Type (4) | Flags (8)     |
++----------------+----------------+----------------+
+|            Agent ID (24)        |  Reserved (8)  |
++----------------------------+----+----------------+
+|    Response Time (16)      |    Reserved (16)    |
++----------------------------+---------------------+
 ```
 
 **Flags**:
