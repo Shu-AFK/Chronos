@@ -1,13 +1,31 @@
 #include "systemMetrics.h"
 
 #include <windows.h>
+#include <iphlpapi.h>
+#include <iomanip>
 
 MEMORYSTATUSEX statex;
-static ULARGE_INTEGER lastCPUMeasurement;
-static int numProcessors;
+MIB_IFTABLE *ifTable = nullptr;
+DWORD size = 0;
 
-void init() {
+int init() {
     statex.dwLength = sizeof(statex);
+
+    if(GetIfTable(nullptr, &size, false) == ERROR_INSUFFICIENT_BUFFER) {
+        ifTable = (MIB_IFTABLE *)malloc(size);
+    }
+
+    if(ifTable == nullptr) {
+        return -1;
+    }
+
+    return 0;
+}
+
+void cleanup() {
+    if(ifTable != nullptr) {
+        free(ifTable);
+    }
 }
 
 bool updateMemoryStruct() {

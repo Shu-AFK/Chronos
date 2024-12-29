@@ -4,12 +4,15 @@
 #define GB 1073741824.0f
 #define BYTESTOGB(X) (X/GB)
 
-void init();
+int init();
+void cleanup();
 
 bool updateMemoryStruct();
 int getMemoryPercent();
 float getTotalMemory();
 float getAvailMemory();
+
+
 
 float GetCPULoad();
 
