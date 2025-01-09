@@ -6,3 +6,5 @@ add_executable(ChronosAgent
         NetworkProtocol/packets.cpp
         SystemMetrics/systemMetrics.cpp
 )
+
+target_link_libraries(ChronosAgent pdh.lib)
